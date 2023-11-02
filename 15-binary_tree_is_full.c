@@ -10,28 +10,13 @@ size_t has_children(const binary_tree_t *tree);
 
 int binary_tree_is_full(const binary_tree_t *tree)
 {
-	/*int  is_left_full, is_right_full,*/
 	int is_leafNode;
 
 	if (tree == NULL)
 		return (0);
 
-	/*
-	 * if ((tree->left == NULL && tree->right) ||
-	 *	(tree->left && tree->right == NULL) ||
-	 *	binary_tree_is_full(tree->left) == 0 ||
-	 *	binary_tree_is_full(tree->right) == 0)
-	*/
-		/*return (0);*/
-
-	/*if (tree->left && tree->right)*/
-	/*{*/
-		/*is_left_full = binary_tree_is_full(tree->left);*/
-		/*is_right_full = binary_tree_is_full(tree->right);*/
-	/*}*/
-
-	/*return (is_left_full && is_right_full);*/
 	is_leafNode = is_leaf_node(tree);
+
 	if (is_leafNode)
 		return (1);
 
