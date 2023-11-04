@@ -58,14 +58,11 @@ bst_t *bst_remove(bst_t *root, int value)
 			free(temp_node);
 			/*return (temp_node);*/
 		}
-		else
-		{
-			/*node has 2 children*/
-			bst_t *temp_node  = find_min(root->right);
+		/*node has 2 children*/
+		bst_t *temp_node  = find_min(root->right);
 
-			root->n = temp_node->n;
-			root->right = bst_remove(root->right, temp_node->n);
-		}
+		root->n = temp_node->n;
+		root->right = bst_remove(root->right, temp_node->n);
 	}
 	return (root);
 }
