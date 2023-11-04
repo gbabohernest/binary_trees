@@ -56,14 +56,16 @@ bst_t *bst_remove(bst_t *root, int value)
 			free(root);
 			return (temp);
 		}
+		else
+		{
+			/* node has two children*/
+			/*find the in-order successo*/
+			bst_t *temp = find_min(root->right);
 
-		/* node has two children*/
-		/*find the in-order successo*/
-		bst_t *temp = find_min(root->right);
+			root->n = temp->n;
 
-		root->n = temp->n;
-
-		root->right = bst_remove(root->right, temp->n);
+			root->right = bst_remove(root->right, temp->n);
+		}
 	}
 
 	return (root);
