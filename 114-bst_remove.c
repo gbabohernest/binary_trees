@@ -3,10 +3,10 @@
 bst_t *find_min(bst_t *node);
 
 /**
- * find_min - Find the node with the minimum value in a BST
- * @node: A pointer to the root of the BST
- * Return: A pointer to the node with the minimum value
- */
+* find_min - Find the node with the minimum value in a BST
+* @node: A pointer to the root of the BST
+* Return: A pointer to the node with the minimum value
+*/
 
 bst_t *find_min(bst_t *node)
 {
@@ -36,27 +36,36 @@ bst_t *bst_remove(bst_t *root, int value)
 		root->right = bst_remove(root->right, value);
 	else
 	{
+
 		if (root->left == NULL)
 		{
 			/*node has right child*/
-			bst_t *temp_node = root->right;
+			/*bst_t *temp_node = root->right;*/
+			bst_t *temp_node = root;
 
-			free(root);
-			return (temp_node);
+			root = root->right;
+			free(temp_node);
+			/*return (temp_node);*/
 		}
 		else if (root->right == NULL)
 		{
 			/*node has a left child*/
-			bst_t *temp_node = root->left;
+			/*bst_t *temp_node = root->left;*/
 
-			free(root);
-			return (temp_node);
+			bst_t *temp_node = root;
+
+			root = root->left;
+			free(temp_node);
+			/*return (temp_node);*/
 		}
-		/*node has 2 children*/
-		bst_t *temp_node  = find_min(root->right);
+		else
+		{
+			/*node has 2 children*/
+			bst_t *temp_node  = find_min(root->right);
 
-		root->n = temp_node->n;
-		root->right = bst_remove(root->right, temp_node->n);
+			root->n = temp_node->n;
+			root->right = bst_remove(root->right, temp_node->n);
+		}
 	}
 	return (root);
 }
