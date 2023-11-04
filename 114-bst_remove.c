@@ -30,39 +30,41 @@ bst_t *find_min(bst_t *node)
 bst_t *bst_remove(bst_t *root, int value)
 {
 	if (root == NULL)
-		return NULL;
+		return (NULL);
 
-     	/*Recursively search for the node to be removed*/
+	/*Recursively search for the node to be removed*/
 	if (value < root->n)
 		root->left = bst_remove(root->left, value);
 	else if (value > root->n)
 		root->right = bst_remove(root->right, value);
 	else
 	{
-        	/*Node with the value to be removed found*/
+		/*Node with the value to be removed found*/
 
-        	/*node has only one child or no child*/
+		/*node has only one child or no child*/
 		if (root->left == NULL)
 		{
 			bst_t *temp = root->right;
+
 			free(root);
 			return (temp);
 		}
 		else if (root->right == NULL)
 		{
 			bst_t *temp = root->left;
+
 			free(root);
 			return (temp);
-        }
+		}
 
-        /* node has two children*/
-        /*find the in-order successo*/
-        bst_t *temp = find_min(root->right);
+		/* node has two children*/
+		/*find the in-order successo*/
+		bst_t *temp = find_min(root->right);
 
-        root->n = temp->n;
+		root->n = temp->n;
 
-        root->right = bst_remove(root->right, temp->n);
-    }
+		root->right = bst_remove(root->right, temp->n);
+	}
 
-    return root;
+	return (root);
 }
