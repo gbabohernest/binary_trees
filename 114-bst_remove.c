@@ -40,29 +40,31 @@ bst_t *bst_remove(bst_t *root, int value)
 		if (root->left == NULL)
 		{
 			/*node has right child*/
-			/*bst_t *temp_node = root->right;*/
-			bst_t *temp_node = root;
+			bst_t *temp_node = root->right;
+			/*bst_t *temp_node = root;*/
 
-			root = root->right;
-			free(temp_node);
-			/*return (temp_node);*/
+			/*root = root->right;*/
+			free(root);
+			return (temp_node);
 		}
 		else if (root->right == NULL)
 		{
 			/*node has a left child*/
-			/*bst_t *temp_node = root->left;*/
+			bst_t *temp_node = root->left;
+			/*bst_t *temp_node = root;*/
 
-			bst_t *temp_node = root;
-
-			root = root->left;
-			free(temp_node);
-			/*return (temp_node);*/
+			/*root = root->left;*/
+			free(root);
+			return (temp_node);
 		}
-		/*node has 2 children*/
-		bst_t *temp_node  = find_min(root->right);
+		else
+		{
+			/*node has 2 children*/
+			bst_t *temp_node  = find_min(root->right);
 
-		root->n = temp_node->n;
-		root->right = bst_remove(root->right, temp_node->n);
+			root->n = temp_node->n;
+			root->right = bst_remove(root->right, temp_node->n);
+		}
 	}
 	return (root);
 }
