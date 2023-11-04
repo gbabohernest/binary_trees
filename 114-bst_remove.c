@@ -12,7 +12,7 @@ bst_t *find_min(bst_t *node)
 {
 	bst_t *current = node;
 
-	while (current && current->left)
+	while (current->left != NULL)
 		current = current->left;
 
 	return (current);
