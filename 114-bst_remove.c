@@ -58,7 +58,7 @@ bst_t *bst_remove_node(bst_t *root, bst_t *node)
 		if (node->left != NULL)
 			node->left->parent = parent;
 		free(node);
-		return ((parent == NULL ? node->left: root));
+		return ((parent == NULL ? node->left : root));
 	}
 
 	/*two children*/
@@ -69,7 +69,8 @@ bst_t *bst_remove_node(bst_t *root, bst_t *node)
 }
 
 /**
-* custom_bst_remove_recursive - Removes a node from a binary search tree recursively.
+* custom_bst_remove_recursive - Removes a node from a
+*				binary search tree recursively.
 * @root: A pointer to the root node of the BST to remove a node from.
 * @node: A pointer to the current node in the BST.
 * @value: The value to remove from the BST.
